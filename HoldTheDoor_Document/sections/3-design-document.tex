@@ -1,0 +1,466 @@
+% 3 Design Document: write your text below the grey guidance boxes (guidance environments).
+\section{Design Document}
+
+\begin{guidance}
+This document describes how game objects behave, how they are controlled and what properties they have.
+
+This document is primarily concerned with the game itself.
+
+This part is modular: several design (game mechanics) documents can be attached to the concept document.
+\end{guidance}
+This section explains the game mechanics, tower stats, zombie behaviors, and user interface of \textbf{Hold the Door}.
+
+\subsection{Design Version}
+
+\begin{guidance}
+A version can single out a certain series of devices that may have limitations, different OS or more advanced features.
+
+A code convention for different versions would be advisable.
+
+\textit{Example: W1.1}
+
+(W): Developed for a particular platform (e.g. Windows)
+
+(1.): Concept Update
+
+(.1): Content Update
+\end{guidance}
+\textbf{Design Version: W1.1}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{W:} Windows PC and Desktop WebGL platform.
+  \item \textbf{1.:} Core tower defense mechanics and zombie path movement.
+  \item \textbf{.1:} Numerical balance for 3 towers and 3 zombie types.
+\end{itemize}
+
+\subsection{Design Guidelines}
+
+\begin{guidance}
+This is an important statement about any creative restrictions that must be respected and about the overall goal of the design.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Left-to-Right Direction:} Zombies always move from the left side of the screen toward the wooden fence on the right side.
+  \item \textbf{Clear Tower Roles:}
+    \begin{itemize}[label=$\circ$]
+      \item \textit{Shotgun Tower} is best against groups of fast \textit{Runner Zombies}.
+      \item \textit{Sniper Tower} is best against high-health \textit{Tank Zombies}.
+      \item \textit{Single-Target Sentry} is best against regular \textit{Walker Zombies}.
+    \end{itemize}
+  \item \textbf{Fair Rules:} Towers never miss their target randomly. The outcome depends purely on where the player places towers and how they spend their money.
+  \item \textbf{Good Audio-Visual Feedback:} When a bullet hits a zombie, the zombie flashes white, shows a blood particle effect, and plays a hit sound.
+\end{itemize}
+
+\subsection{Game Design Definitions}
+
+\begin{guidance}
+This is a section where the definition of the game play is established.
+
+Definitions should include how a player wins, loses, passes levels and the main focus of the game play.
+
+Issues that should be addressed here are:
+
+\begin{itemize}[label=$\circ$]
+  \item Menu
+  \item Synopsis
+  \item Game Play
+  \item Player Control
+  \item Game Over (Winning \& Losing)
+\end{itemize}
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Menu:} Start Game, Level Select, Audio Settings, and Exit.
+  \item \textbf{Synopsis:} Zombies are attacking the survivor outpost. The player must stop them before they break down the wooden fence gate.
+  \item \textbf{Game Play:}
+    \begin{enumerate}
+      \item \textit{Build Phase:} The player places towers on empty sockets using scrap money.
+      \item \textit{Combat Phase:} The wave starts. Zombies walk along the path toward the fence. Towers automatically shoot zombies in their range. The player earns scrap for each zombie killed, which is used to buy or upgrade towers.
+    \end{enumerate}
+  \item \textbf{Player Control:} Left-click to select sockets, build towers, and upgrade them. Hotkeys \texttt{1--3} select towers quickly. \texttt{Spacebar} starts the wave or changes game speed ($1\times, 2\times, 3\times$). \texttt{Escape} closes menus or pauses the game.
+  \item \textbf{Winning and Losing:}
+    \begin{itemize}[label=$\circ$]
+      \item \textbf{Winning:} Eliminate all zombie waves while keeping the fence alive.
+      \item \textbf{Losing:} The fence health drops to 0 because too many zombies reached the gate.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Game Matrix}
+
+\begin{guidance}
+This is a spreadsheet containing the generic names of the player and antagonistic elements and their game properties.
+
+It allows an easy cross-reference of the values of every element in the game.
+
+Consult the programmer about the properties of each game object.
+
+\textit{See Appendix B}
+\end{guidance}
+The detailed numbers for all towers (cost, damage, fire rate, range) and zombies (health, speed, damage, bounty) are listed in \textbf{Appendix~B}.
+
+\subsection{Game Flow Chart}
+
+\begin{guidance}
+This is where a visual shows how the different game elements and their properties interact.
+
+Game Flow chart should represent Objects, Properties and Actions that are present in the game.
+
+Flow chart objects, properties, and actions should have a number reference to where they exist within the game mechanics document.
+
+\textit{See Appendix C}
+\end{guidance}
+A complete visual flow chart of the game loop is shown in \textbf{Appendix~C}.
+
+\subsection{Player Elements}
+
+\begin{guidance}
+List all the elements that are directly related to or to the benefit of the player.
+
+Devise two sets of names for player elements. One set is a generic name (or code), and the other is its game name.
+
+Describe the terminology that you use to describe the player’s properties.
+
+This is a good place to interact with a graphic designer to get graphics to match to game names.
+
+Graphics that will be seen during gameplay should be exhibited here.
+
+Multi-player issues should also be mentioned here.
+\end{guidance}
+Player elements include the towers, currency, and the wooden fence:
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.7,l]X[1.0,l]X[1.3,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Generic Code} & \textbf{Game Name} & \textbf{Role in Game} \\
+\texttt{TOW\_SINGLE} & Single-Target Sentry & Good single-target damage, steady fire rate, medium range. \\
+\texttt{TOW\_SNIPER} & Sniper Tower & Very long range, high damage, slow reload speed. \\
+\texttt{TOW\_SHOTGUN} & Shotgun Tower & Short range, wide spread area damage against groups. \\
+\texttt{BASE\_FENCE} & Wooden Fence Gate & The base barrier to protect (starts with 20 HP). \\
+\texttt{RES\_SCRAP} & Scrap Currency & Money earned from killing zombies, used to build towers. \\
+\end{longtblr}
+
+\subsubsection{Player Definition}
+
+\begin{guidance}
+Make quick descriptions that define the player.
+
+What are the default settings for the player at the beginning of the game or level?
+
+A suggested list of player definitions:
+
+\begin{itemize}[label=\textendash]
+  \item Actions: What can the player do?
+  \item Information (Status): What information about the game is available for the player?
+  \item Default Properties: How does the player begin the game?
+  \item Winning: How can the player win?
+  \item Losing: How does the player lose?
+\end{itemize}
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Player Actions:} Build towers on empty sockets, upgrade towers, sell towers (for a 70\% refund), change targeting priority (First, Last, Strongest, Closest), and call waves early.
+  \item \textbf{Status Info:} The HUD shows current Scrap money, Fence Health ($20/20$), current Wave number, and a preview of coming zombies.
+  \item \textbf{Default Setup:} Each level starts with 250 scrap, 20 fence health, and zero towers placed.
+  \item \textbf{Winning:} Destroy all zombies across all waves.
+  \item \textbf{Losing:} Fence health drops to 0.
+\end{itemize}
+
+\subsubsection{Player Properties}
+
+\begin{guidance}
+Make a list that defines the properties that a player has.
+
+Player properties can be affected by player’s action or interaction with other game elements.
+
+Define the properties and how they affect the player’s current game.
+
+A suggested list of player properties:
+
+\begin{itemize}[label=\textendash]
+  \item Health
+  \item Weapons
+  \item Actions
+  \item Etc.
+\end{itemize}
+For each property, describe the feedback the player gets when it changes.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Fence Health:} Starts at 20 HP. When a zombie attacks the fence, the screen flashes red, shakes slightly, and plays a wood-cracking sound.
+  \item \textbf{Scrap Money:} Increases whenever a zombie dies, showing floating green numbers and playing a metal sound.
+  \item \textbf{Game Speed:} Can be changed to Pause, $1\times, 2\times,$ or $3\times$ speed.
+\end{itemize}
+
+\subsubsection{Player Rewards (Power-ups \& Pick-ups)}
+
+\begin{guidance}
+Make a list of all objects that affect the player in a positive way. (i.e. health replenished)
+
+Define these objects by describing what effect they have and how the player can use them.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Zombie Bounty:} Scrap money given immediately when a zombie dies (8 for Runner, 15 for Walker, 35 for Tank).
+  \item \textbf{Early Wave Bonus:} Calling a wave early gives extra scrap money based on the seconds saved ($+2$ scrap per second).
+  \item \textbf{Stars:} 1 to 3 stars awarded after finishing a level based on how much fence health remains.
+\end{itemize}
+
+\subsubsection{User Interface (UI)}
+
+\begin{guidance}
+This is where a description of the user’s control of the game can be placed.
+
+It is also recommended to think about which buttons on a device would be best suited for the game.
+
+Consider what the worst layout is, then ask yourself if your UI is still playable.
+
+A visual representation can be added, where we relate the physical controls to the actions in the game.
+
+When designing the UI, make use of the expertise of someone from quality control.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Building Menu:} Clicking an empty socket opens a small circle with the 3 tower icons and their prices.
+  \item \textbf{Tower Details:} Clicking an existing tower shows its attack range circle, an Upgrade button, a Sell button, and a target priority selector.
+\end{itemize}
+
+\subsubsection{Heads up Display (HUD)}
+
+\begin{guidance}
+Describe here all graphics that show information during gameplay.
+
+A visual representation (mock-up screenshot) here would be useful.
+
+This is a good place to interact with a graphic designer.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Top Left:} Fence health bar ($20/20$) and scrap money icon.
+  \item \textbf{Top Center:} Wave counter (e.g. ``Wave 2 / 5'') and upcoming zombie icons.
+  \item \textbf{Top Right:} Speed controls ($||, >, >>$) and Pause button.
+  \item \textbf{Bottom Right:} Large ``Call Wave'' button.
+\end{itemize}
+
+\subsubsection{Player View}
+
+\begin{guidance}
+A screenshot is essential here.
+
+A definition of how the camera moves for the player.
+
+A mock-up of an overview of the level relative to the screen size will help create a perspective of a level’s size compared to what is actually seen.
+\end{guidance}
+The camera has a fixed 2D top-down view. The full play area, from the zombie spawn point on the left to the wooden fence gate on the right, fits cleanly inside a 16:9 ($1920\times1080$) screen.
+
+\subsection{Antagonistic Elements}
+
+\begin{guidance}
+List the antagonistic objects (enemies, opponents) here, with graphics and written descriptions.
+
+Describe the terminology that you used to describe antagonistic properties.
+
+Devise two sets of names for antagonistic elements. One set is a generic name (or code) and the other is its game name.
+
+This is a good place to interact with a graphic designer to get graphics to match to game names.
+\end{guidance}
+Antagonistic elements are zombies that walk from left to right along the path to destroy the fence:
+
+\subsubsection{Antagonistic Definitions}
+
+\begin{guidance}
+Describe here what makes an element antagonistic.
+\end{guidance}
+Any zombie unit that spawns on the left, travels toward the fence, absorbs damage from towers, and reduces fence health upon arrival is an enemy.
+
+\subsubsection{Antagonistic Properties}
+
+\begin{guidance}
+This is a list of properties that antagonistic elements have in common.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Health (HP):} When health reaches 0, the zombie dies.
+  \item \textbf{Movement Speed:} How fast the zombie moves along the path.
+  \item \textbf{Fence Damage:} Damage dealt to the fence when the zombie reaches it.
+  \item \textbf{Bounty:} Scrap money awarded to the player when killed.
+\end{itemize}
+
+\subsubsection{Antagonistic List}
+
+\begin{guidance}
+This is where a list of all the antagonistic elements goes.
+\end{guidance}
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.7,l]X[0.9,l]X[0.5,c]X[0.6,c]X[0.6,c]X[0.7,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Generic Code} & \textbf{Game Name} & \textbf{HP} & \textbf{Speed} & \textbf{Fence Dmg} & \textbf{Best Counter} \\
+\texttt{ZOM\_TANK} & Tank Zombie & 600 & 0.9 u/s & 5 HP & Sniper Tower (high damage) \\
+\texttt{ZOM\_RUNNER} & Runner Zombie & 60 & 3.6 u/s & 1 HP & Shotgun Tower (area blast) \\
+\texttt{ZOM\_WALKER} & Walker Zombie & 180 & 1.8 u/s & 2 HP & Single Sentry (steady fire) \\
+\end{longtblr}
+
+\subsubsection{Artificial Intelligence (AI)}
+
+\begin{guidance}
+Visuals and written descriptions of the antagonistic elements’ behaviours go here.
+
+Label them so that they can be used in level design without having to describe them again.
+
+Devise generic names for repetitive behaviors.
+
+This is how an AI action could be broken down:
+
+\begin{itemize}[label=\textendash]
+  \item Normal State: What is the object doing if it has not come in contact with the player?
+  \item Detection State: What does it take for this object to detect the player?
+  \item Reaction State: What does the object do after it has detected the player?
+  \item End State: What happens to the object after the player has reacted correctly or incorrectly to it?
+\end{itemize}
+\end{guidance}
+Zombies follow a simple behavior cycle:
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Walking State:} Spawns on the left and walks along the path waypoints heading right toward the fence.
+  \item \textbf{Reaching the Fence:} When close to the wooden fence, the zombie stops moving.
+  \item \textbf{Attacking State:} The zombie attacks the fence, deals damage to its health, and then disappears.
+  \item \textbf{Dying State:} If reduced to 0 HP by towers, it plays a death sound, spawns a blood effect, gives scrap money, and is removed from the screen.
+\end{itemize}
+
+\subsection{Global Game Elements}
+
+\begin{guidance}
+In this section it is important to describe the boundaries, neutral objects, camera views and scale of the world.
+
+Neutral game world objects can be things like a static background, objects that do not interact with the player or antagonistic elements.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{The Dirt Road:} The path connecting the zombie spawn point to the fence gate.
+  \item \textbf{The Wooden Fence Gate (The Door):} Placed at the right edge of the screen, with visual states for full health, damaged, and broken.
+  \item \textbf{Socket Plots:} Circular pads beside the road where towers can be constructed.
+\end{itemize}
+
+\subsection{The Story}
+
+\begin{guidance}
+This is where the story can be described in detail.
+
+A story board can be used to tie in graphics to the text.
+
+This can later be used for splash screen concepts.
+\end{guidance}
+After a sudden zombie outbreak, a group of survivors took shelter at a quiet forestry outpost. They built a strong wooden fence across the only valley road leading into the camp. Now, hungry hordes of zombies have found the camp. As the defense leader, you must place defensive towers along the road to stop the zombies and protect the fence.
+
+\subsubsection{The Story Copy}
+
+\begin{guidance}
+A shorter version of the story (the in-game version) should also be written here.
+
+This is where the script for in game characters or story information during the cut scenes would be placed.
+
+This category does not always pertain to the current Game Design.
+\end{guidance}
+\textit{``Captain, zombies are coming down the canyon road from the west! Our wooden fence won't survive if they get through. Set up our sentries, snipers, and shotguns, and HOLD THE DOOR!''}
+
+\subsection{Concept Art}
+
+\begin{guidance}
+Sketches that are used for the concept can go into this section as visual reference.
+
+In the case of a brand, certain creative restrictions should be noted here.
+
+This is a good place to interact with a graphic designer to get graphics to match to game names.
+\end{guidance}
+Concept sketches include the 3 towers (sentry, sniper, shotgun), the 3 zombie shapes (skinny runner, normal walker, big tank), and the level map layout.
+
+\subsection{Level Design}
+
+\begin{guidance}
+This is where information pertaining to level design and visuals of the level design goes.
+
+Level design can best be shown as a flow chart.
+
+Use generic names to create level design.
+\end{guidance}
+\begin{enumerate}
+  \item \textbf{Level 1: Frontier Road (Tutorial):} A simple road with 6 sockets. Introduces Walkers, Runners, Sentries, and Shotgun towers across 5 waves.
+  \item \textbf{Level 2: Narrow Canyon (Tank Intro):} A narrower path with 8 sockets. Introduces heavy Tank zombies, requiring the player to build Sniper towers across 7 waves.
+  \item \textbf{Level 3: Outpost Gate (Final Challenge):} Fast waves combining all 3 zombie types, testing the player's strategy across 10 waves.
+\end{enumerate}
+
+\subsubsection{Level Copy}
+
+\begin{guidance}
+This is where the script for in game characters or story information during the cut scenes would be placed.
+\end{guidance}
+\textbf{In-game message:} \textit{``Runners incoming! Place Shotgun towers near road turns to hit multiple zombies at once!''}
+
+\subsection{Audio \& Sound F/X}
+
+\begin{guidance}
+This is where game ambient and Sound F/X should be listed with generic names then described.
+
+This section also decides whether controller rumble or mobile haptic feedback is used.
+\end{guidance}
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.8,l]X[1.2,l]X[1.0,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Sound ID} & \textbf{Description} & \textbf{When Played} \\
+\texttt{SFX\_RIFLE\_FIRE} & Fast rifle gunshot & Sentry fires \\
+\texttt{SFX\_SNIPER\_FIRE} & Heavy loud rifle shot & Sniper tower fires \\
+\texttt{SFX\_SHOTGUN\_BLAST} & Wide shotgun blast sound & Shotgun tower fires \\
+\texttt{SFX\_ZOMBIE\_GROAN} & Zombie growl and death sound & Zombie dies \\
+\texttt{SFX\_FENCE\_HIT} & Wooden fence cracking sound & Zombie hits the fence \\
+\texttt{SFX\_SCRAP\_COLLECT} & Metal coin/tool sound & Player earns scrap money \\
+\texttt{SFX\_VICTORY} & Cheerful victory fanfare & All waves cleared \\
+\texttt{SFX\_DEFEAT} & Sad defeat sound & Fence health reaches 0 \\
+\end{longtblr}
+
+\subsection{Game Architecture}
+
+\begin{guidance}
+This is best done by a flow chart to represent the overall game.
+
+Number each screen.
+
+\begin{itemize}[label=\textbullet]
+  \item Title Screen
+  \item Option Screens
+  \item Game Modes
+  \item End Screens
+\end{itemize}
+\textit{See Appendix D}
+\end{guidance}
+The overall screen flow and game system architecture are diagrammed in \textbf{Appendix~D}.
+
+\subsubsection{Game Architecture Overview}
+
+\begin{guidance}
+The splash screens or video clips must match the game’s story and style.
+
+If cut scenes use video then story boards should be created.
+
+This will need to be created with the graphic designer.
+
+Menu should be designed with the most important options easily accessible.
+
+Be aware how many clicks it takes to accomplish a task.
+
+It would be wise to get together with someone from quality control and a programmer.
+
+The Game Instructions should be written so that the player understands how to play the game.
+
+Mock-ups should be made so that the programmers get the correct layout of the menu.
+
+Describe the high-score screen here as well.
+\end{guidance}
+The menus are simple: Title Screen $\rightarrow$ Main Menu $\rightarrow$ Level Select $\rightarrow$ Gameplay Screen $\rightarrow$ Win/Lose Screen.
+
+\subsubsection{Architecture Copy}
+
+\begin{guidance}
+All text for the game can be compiled here.
+
+Review Game Architecture Overview
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \texttt{TXT\_VICTORY:} ``THE FENCE HOLDS! You survived the horde.''
+  \item \texttt{TXT\_DEFEAT:} ``THE FENCE HAS BROKEN! The camp has fallen.''
+\end{itemize}
+
+\subsubsection{How to play Copy}
+
+\begin{guidance}
+This will be game copy.
+
+Information for the player, clearly describing how to play the game.
+\end{guidance}
+\textbf{How to Play Hold the Door:}
+\begin{enumerate}
+  \item \textbf{Build Towers:} Click on round sockets near the road to build a Sentry, Sniper, or Shotgun tower.
+  \item \textbf{Choose the Right Weapon:} Use Shotguns for fast Runner groups, Snipers for heavy Tank zombies, and Sentries for regular Walkers.
+  \item \textbf{Protect the Fence:} Stop zombies before they reach the right side of the screen. If the wooden fence is destroyed, you lose!
+\end{enumerate}

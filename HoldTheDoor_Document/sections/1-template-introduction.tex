@@ -1,0 +1,64 @@
+% 1 Template Introduction
+\section{Template Introduction}
+
+This template is adapted from Micah Hrehovcsik’s “Game Design \& Concept Document Template” (2004), which is based on research done during an internship at Overloaded Pocket Media. It has been updated several times based on new experience and insight into game design, and it is intended for games on any platform, not only mobile games, for students and game designers alike.
+
+The template aims at a clear game design document. It is divided into three parts, the concept document, the design (game mechanics) document and the technical document, so that it can be updated easily and split into separate documents when needed.
+
+Documents created with this template focus on a well-devised game. The template does not predict the playability of the game and does not plan the whole development, so it covers only one phase of the game development process. It is recommended that any game design be tested with tangible means such as pencil and paper, cards or a board before major resources are allotted to it. This document is a starting point and cannot replace hands-on interaction and game testing.
+
+It has been adapted for the YAM 415 Game Programming course at Istanbul Sabahattin Zaim University by Assist. Prof. Dr. Abdullah Sönmez and updated in 2026.
+
+\subsection{How to Use This Template}
+
+Follow these rules when using the template:
+
+\begin{itemize}[label=\textbullet]
+  \item The descriptions and examples under each heading are guidance; replace them with your own content.
+  \item Do not change the section numbers or headings; the announcements refer to sections by number (e.g. 2.3 Sign-Off).
+  \item Give every figure and table a caption, and list all sources and assets in 4.7.
+  \item Compile the document twice before submitting so that the table of contents and page numbers are up to date (Overleaf does this automatically).
+  \item This is the LaTeX edition of the template. Enter the cover details once at the top of \texttt{main.tex} (\texttt{\textbackslash GroupName}, \texttt{\textbackslash GroupCode}, \texttt{\textbackslash GameName}, \texttt{\textbackslash DocVersion}, \texttt{\textbackslash DocDate}, \texttt{\textbackslash PreparedBy} and, if you have one, \texttt{\textbackslash GroupLogo}).
+  \item Write your text in the files in the \texttt{sections} folder, below the grey guidance boxes, and put your images in the \texttt{figures} folder.
+  \item Before submitting, set \texttt{\textbackslash showguidancefalse} in \texttt{main.tex}: the guidance boxes, the grey hints in the tables, the examples in Appendices B–D and this part (1~Template Introduction) are left out, and the section numbers stay the same.
+  \item Compile with pdfLaTeX (the Overleaf default); XeLaTeX and LuaLaTeX also work.
+\end{itemize}
+
+\subsection{Sections Required in Each Submission}
+
+The table below shows which sections each submission requires.
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[1.200,l]X[0.774,l]X[1.026,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}, cells={font=\small}}
+\textbf{Section} & \textbf{Midterm (Concept Document)} & \textbf{Final (Game Document)} \\
+2 Concept Document (2.1–2.9) & Required & Required (updated) \\
+3 Design Document (3.1–3.13) & May be removed & Required \\
+4 Technical Document (4.1–4.12) & May be removed & Required \\
+Appendix A (5.1–5.6: taxonomy, genre, game elements, content, theme and style) & Keep (do not remove) & Keep (do not remove) \\
+Appendices B–D (game matrix, flow chart, game architecture) & May be removed if not prepared yet & Required (referred to by 3.4, 3.5 and 3.13) \\
+Appendix E (AI Use Declaration) & Required & Required (for the whole project) \\
+\end{longtblr}
+
+\subsection{Checklist Before Submitting}
+
+Before you submit the document, check that:
+
+\begin{checklist}
+  \item The cover shows the game name, group code (e.g. G07), document version and date.
+  \item Sections 2.2 Credit Page and 2.3 Sign-Off are filled in.
+  \item The table of contents and page numbers are up to date.
+  \item The guidance is hidden: \texttt{\textbackslash showguidancefalse} is set in \texttt{main.tex}.
+  \item Spelling, grammar and formatting have been checked.
+  \item AI use is declared in Appendix E, or the box there is ticked if no AI was used.
+  \item The PDF is saved with the name given in the announcement (e.g. YAM415\_G07\_ConceptDocument.pdf), and the hash values are computed from this final PDF.
+\end{checklist}
+
+\subsection{Template Version History}
+
+Versions of this template:
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.542,l]X[0.426,l]X[2.032,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}, cells={font=\small}}
+\textbf{Version} & \textbf{Date} & \textbf{Changes} \\
+PD20250511V2\_2 & 05.11.2025 & 2025 version (.doc) \\
+v2026.1 & 24.10.2026 & Language corrections; current examples; new sections 1.1–1.4, 4.9–4.12 and Appendix E; resource and licence table in 4.7; sign-off table for all members; .docx format \\
+v2026.1 (LaTeX) & 25.10.2026 & LaTeX edition of v2026.1 with the same sections, numbering and tables; guidance boxes that can be hidden for the submitted PDF \\
+\end{longtblr}

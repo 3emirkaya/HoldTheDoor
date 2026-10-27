@@ -1,0 +1,46 @@
+% =====================================================================
+%  YAM 415 Game Programming - Game Concept & Design Document
+%  Hold the Door - Aggro Games
+%  Istanbul Sabahattin Zaim University
+% =====================================================================
+\documentclass[10pt,a4paper]{article}
+
+% ---------------------------------------------------------------------
+%  Cover details:
+% ---------------------------------------------------------------------
+\newcommand{\GroupName}{Aggro Games}
+\newcommand{\GroupCode}{G01}
+\newcommand{\GameName}{Hold the Door}
+\newcommand{\DocVersion}{v1.0}
+\newcommand{\DocDate}{27.10.2026}
+\newcommand{\PreparedBy}{Emir KAYA, Ömer Faruk YÜCE, Metehan GERGİN}
+\newcommand{\GroupLogo}{figures/aggro_clean_td_logo.png}
+
+% ---------------------------------------------------------------------
+%  Guidance: \showguidancetrue shows the grey guidance boxes, the grey hints
+%  in the tables, the examples in Appendices B-D and part 1 (Template
+%  Introduction). Use \showguidancefalse for the PDF you submit; the
+%  section numbers stay the same.
+% ---------------------------------------------------------------------
+\newif\ifshowguidance
+\showguidancetrue
+
+\input{style}
+
+\begin{document}
+\makecover
+\maketoc
+\ifshowguidance
+  \input{sections/1-template-introduction}
+\else
+  \setcounter{section}{1}
+\fi
+\input{sections/2-concept-document}
+\input{sections/3-design-document}
+\input{sections/4-technical-document}
+\input{sections/5-appendix-a}
+\input{sections/6-appendix-b}
+\input{sections/7-appendix-c}
+\input{sections/8-appendix-d}
+\input{sections/9-appendix-e}
+\end{document}

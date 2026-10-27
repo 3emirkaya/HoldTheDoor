@@ -1,0 +1,300 @@
+% 4 Technical Document: write your text below the grey guidance boxes (guidance environments).
+\section{Technical Document}
+
+\begin{guidance}
+The information concerning the technical aspects of the game should be placed here.
+
+The technical document is best achieved with consensus from the people responsible for the Visual, Programming and Audio aspects.
+
+This part is modular: several technical documents can be attached to the concept and design documents.
+\end{guidance}
+This section explains the software architecture, coding standards, tools, and technical requirements used to create \textbf{Hold the Door}.
+
+\subsection{System Requirements}
+
+\begin{guidance}
+This is a list of system requirements that a device will have to meet to run the game.
+
+e.g. Operating system: Windows 10/11 (64-bit); graphics card: DirectX 12 capable; memory: 8 GB RAM; storage: 2 GB free space.
+
+This also represents the restrictions that may apply to the end product.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Operating System:} Windows 10 / 11 (64-bit) or any modern web browser with WebGL2 support (Chrome, Edge, Firefox).
+  \item \textbf{Processor (CPU):} Dual-core $2.0\text{ GHz}$ (Intel Core i3 / AMD Ryzen 3 or higher).
+  \item \textbf{Memory (RAM):} 4 GB minimum (8 GB recommended).
+  \item \textbf{Graphics (GPU):} DirectX 11 / 12 capable graphics card with at least 1 GB VRAM.
+  \item \textbf{Storage Space:} 500 MB free hard drive space.
+\end{itemize}
+
+\subsection{Visual Content}
+
+\begin{guidance}
+A list of technical requirements from those concerned with the visual aspects of the game.
+
+This is a section that will require extensive meetings with a graphic designer.
+
+All objects should be listed with their generic names.
+
+\begin{itemize}[label=\textbullet]
+  \item General
+  \begin{itemize}[label=$\circ$]
+    \item File Size Restrictions
+    \item File Format Type
+    \item File Quality Type
+    \item Visual Scale
+  \end{itemize}
+  \item Player Elements
+  \begin{itemize}[label=$\circ$]
+    \item Type of States (Default, Damage, Destroyed, etc..)
+    \begin{itemize}[label=\sqbullet]
+      \item Number of Animation Frames
+    \end{itemize}
+  \end{itemize}
+  \item Heads Up Display (HUD)
+  \begin{itemize}[label=$\circ$]
+    \item Type Icons
+    \item States
+    \item Font Type
+  \end{itemize}
+  \item Antagonistic Elements
+  \begin{itemize}[label=$\circ$]
+    \item Type of States (Default, Damage, Destroyed, etc..)
+    \item Number of Animation Frames
+  \end{itemize}
+  \item Global Elements
+  \begin{itemize}[label=$\circ$]
+    \item Background/Texture/Tiles
+    \item Font Type
+  \end{itemize}
+\end{itemize}
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Format \& Size:} All sprites are 32-bit PNG files with transparent backgrounds, set to 64 Pixels Per Unit (PPU) in Unity.
+  \item \textbf{Towers:} Towers rotate toward their targets, show a muzzle flash particle when shooting, and play an upgrade particle effect when improved.
+  \item \textbf{Zombies:} 6-frame walking animation, a single-frame white flash when hit by bullets, and a red particle effect when dying.
+  \item \textbf{Wooden Fence:} 3 sprite states: full health (normal), half health (cracked), and 0 health (broken).
+  \item \textbf{Text:} Rendered using Unity TextMeshPro for sharp and clear UI text.
+\end{itemize}
+
+\subsection{Audio Content}
+
+\begin{guidance}
+It is very important to communicate with the audio designer before and while the audio content is being developed.
+
+\begin{itemize}[label=\textbullet]
+  \item General
+  \begin{itemize}[label=$\circ$]
+    \item File Size Restrictions
+    \item File Format Type
+    \item File Quality Type
+  \end{itemize}
+  \item Player Elements
+  \begin{itemize}[label=$\circ$]
+    \item Type of Sound f/x
+    \item Device Vibration
+  \end{itemize}
+  \item Antagonistic Elements
+  \begin{itemize}[label=$\circ$]
+    \item Type of Sound f/x
+    \item Device Vibration
+  \end{itemize}
+  \item Global Elements
+  \begin{itemize}[label=$\circ$]
+    \item Ambient Music
+  \end{itemize}
+  \item Splash Screens
+  \begin{itemize}[label=$\circ$]
+    \item Ambient Music
+  \end{itemize}
+  \item Menus
+  \begin{itemize}[label=$\circ$]
+    \item Type of Sound f/x
+  \end{itemize}
+\end{itemize}
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item Sound effects (gunshots, zombie groans, fence hits) are uncompressed 16-bit WAV files ($44.1\text{ kHz}$) for instant playback without delay.
+  \item Background music is in OGG format to save memory.
+  \item An AudioMixer is used to give players Master, Music, and SFX volume sliders in the options menu.
+\end{itemize}
+
+\subsection{Programming Content}
+
+\begin{guidance}
+The contents should be written together with the programmer.
+
+The aim is to organise and modularise as much as possible.
+
+\begin{itemize}[label=\textbullet]
+  \item General
+  \begin{itemize}[label=$\circ$]
+    \item Requirements
+    \item File Size Restrictions
+    \item File Format Type
+    \item Specify Coding Conventions
+    \item Language/Device Restrictions
+    \item Screen Resolution and Aspect Ratio (e.g. 1920×1080, 16:9)
+  \end{itemize}
+  \item Player Elements
+  \begin{itemize}[label=$\circ$]
+    \item Type of Event
+  \end{itemize}
+  \item Antagonistic Elements
+  \begin{itemize}[label=$\circ$]
+    \item Type of Event
+  \end{itemize}
+  \item Global Elements
+  \begin{itemize}[label=$\circ$]
+    \item Type of Event
+  \end{itemize}
+  \item Splash Screens
+  \begin{itemize}[label=$\circ$]
+    \item Type of Event
+  \end{itemize}
+  \item Menus
+  \begin{itemize}[label=$\circ$]
+    \item Type of Event
+    \item Type of Options
+  \end{itemize}
+\end{itemize}
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Engine:} Unity 6 LTS using C\# (.NET Standard 2.1).
+  \item \textbf{Render Pipeline:} Universal Render Pipeline (URP 2D).
+  \item \textbf{Coding Style:} \texttt{PascalCase} for script names and public methods, \texttt{\_camelCase} for private fields (e.g. \texttt{\_currentHealth}).
+  \item \textbf{Resolution:} Fixed 16:9 aspect ratio ($1920\times1080$).
+\end{itemize}
+
+\subsection{Code Structure}
+
+\begin{guidance}
+Give an overview of how objects, functions and data interact, what specific functions and routines do, and the order in which modules will be written.
+\end{guidance}
+The game code is organized into clear and simple scripts:
+\begin{enumerate}
+  \item \textbf{Game Managers:}
+    \begin{itemize}[label=$\circ$]
+      \item \texttt{GameManager.cs}: Manages game states (Build Phase, Combat, Victory, Defeat).
+      \item \texttt{EconomyManager.cs}: Keeps track of scrap money, adds bounty when zombies die, and checks if the player has enough money to build.
+      \item \texttt{FenceHealth.cs}: Tracks fence health points and triggers the Game Over screen if health drops to 0.
+    \end{itemize}
+  \item \textbf{Towers:}
+    \begin{itemize}[label=$\circ$]
+      \item \texttt{Tower.cs}: Base class that detects zombies inside its attack radius and handles shooting intervals.
+      \item \texttt{SingleTargetTower.cs}: Shoots regular bullets at a single zombie.
+      \item \texttt{SniperTower.cs}: Shoots powerful bullets with long range and a 2.5-second reload timer.
+      \item \texttt{ShotgunTower.cs}: Shoots a wide cone of pellets to damage multiple close enemies at once.
+      \item \texttt{TowerPlot.cs}: Detects mouse clicks on ground sockets and opens the build menu.
+    \end{itemize}
+  \item \textbf{Zombies \& Waves:}
+    \begin{itemize}[label=$\circ$]
+      \item \texttt{Zombie.cs}: Base script for zombies (Tank, Runner, Walker) that controls health, speed, moving along path waypoints, and attacking the fence.
+      \item \texttt{WaveManager.cs}: Spawns zombies in waves with set intervals.
+      \item \texttt{ObjectPoolManager.cs}: Reuses bullet and zombie objects to keep the game running smoothly without lag.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Concerns and Alternatives}
+
+\begin{guidance}
+State any technical concerns here, together with the alternatives.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Lag during big waves:} Spawning dozens of bullets and zombies can cause lag. We solve this by using an Object Pool, which reuses existing objects instead of creating new ones constantly.
+  \item \textbf{Zombies skipping turns at high speed:} At $3\times$ speed, fast Runner zombies could overshoot waypoints. We fixed this by checking the distance to the next waypoint in small steps.
+\end{itemize}
+
+\subsection{Resources and Licences}
+
+\begin{guidance}
+A list of the applications and equipment that may be used to develop this game.
+
+This is mostly a legal issue that development members must be aware of.
+
+List every ready-made asset (Asset Store packages, models, textures, sounds, music, fonts) and tool with its source and licence in the table below. List AI-generated assets too, with the tool and its terms of use. Every listed asset must be included on the CD/DVD; links alone are not accepted.
+\end{guidance}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[1.094,l]X[1.094,l]X[0.938,l]X[0.781,l]X[1.094,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Asset / tool} & \textbf{Source (where obtained)} & \textbf{Author / owner} & \textbf{Licence} & \textbf{Used in} \\
+\fillrow[1.6em]Kenney 2D Assets & Kenney.nl & Kenney & CC0 1.0 Universal & Towers, Roads, Fence, UI \\
+\fillrow[1.6em]FreeSound FX Audio & Freesound.org & Various Artists & CC0 / CC-BY 3.0 & Gunshots, Zombie Groans, Hits \\
+\fillrow[1.6em]Unity Universal RP & Unity Package Registry & Unity Technologies & Unity Software Lic. & 2D Graphics Engine \\
+\fillrow[1.6em]TextMeshPro & Unity Package Registry & Unity Technologies & Unity Software Lic. & UI Text \\
+\fillrow[1.6em]Inter Font & Google Fonts & Google Fonts & SIL OFL 1.1 & Menu Text \\
+\end{longtblr}
+
+\subsection{Technical Matrix}
+
+\begin{guidance}
+The Matrix will be split into the different device series for each content category.
+
+Technical Matrix includes the content lists of Audio, Visual and Programming.
+\end{guidance}
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.7,l]X[0.9,l]X[0.8,l]X[1.6,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Category} & \textbf{Component} & \textbf{Details} & \textbf{Performance Goal} \\
+Graphics & 2D Sprites & 64 PPU, PNG RGBA & Smooth 60 FPS on standard PCs \\
+Audio & Sound Effects & 16-bit WAV ($44.1\text{ kHz}$) & Max 12 sounds playing at once \\
+Code & Collision Checks & 2D Physics triggers & Fast checks without frame drops \\
+Code & Memory & Object pooling enabled & No garbage collection lag spikes \\
+\end{longtblr}
+
+\subsection{Version Control}
+
+\begin{guidance}
+Describe how the project uses version control: tool, repository, branch structure and the members’ contributions. Projects without version control or with a single commit are not accepted (see the project announcement).
+\end{guidance}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.625,l]X[1.375,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Item} & \textbf{Description} \\
+Tool & Git and GitHub \\
+\fillrow[1.6em]Repository link & \url{https://github.com/3emirkaya/HoldTheDoor} \\
+Branch structure & \texttt{main} (stable version), \texttt{develop} (testing), \texttt{feature/*} (new features) \\
+\fillrow[1.6em]Commits per member & Each member commits regularly throughout development \\
+AI-assisted commits & Commits using AI code carry the line \texttt{AI-assisted: Google Antigravity} \\
+Submitted files & \texttt{YAM415\_G01\_VCS\_README.txt} and git commit logs in the VCS folder \\
+\end{longtblr}
+
+\subsection{Build and Run}
+
+\begin{guidance}
+Write down everything needed to open and build the project on another computer and run the game.
+\end{guidance}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.625,l]X[1.375,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Item} & \textbf{Description} \\
+Unity version & Unity 6 LTS (6000.3 or 6000.5) \\
+Render pipeline & Universal Render Pipeline (URP 2D) \\
+Packages used & 2D Sprite, Universal RP, TextMeshPro, Input System \\
+\fillrow[1.6em]Scenes in the build & \texttt{0\_MainMenu.unity}, \texttt{1\_Level1.unity}, \texttt{2\_Level2.unity} \\
+Target platform & Windows Standalone (64-bit) and WebGL (Web Browser) \\
+\fillrow[1.6em]Build and run steps & 1. Open project in Unity Hub; 2. Go to File $\rightarrow$ Build Settings; 3. Click ``Build and Run'' \\
+Controls & Left-click (select/build), Right-click/Esc (cancel), Spacebar (start/speed), 1--3 (towers) \\
+\end{longtblr}
+
+\subsection{Testing and Known Issues}
+
+\begin{guidance}
+List the tests you ran (team tests, playtests), what you found and any unresolved bugs.
+\end{guidance}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.625,l]X[1.125,l]X[1.500,l]X[0.750,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Date} & \textbf{Test type / tester} & \textbf{Finding} & \textbf{Status} \\
+\fillrow[1.6em]12.10.2026 & Code Test / Emir KAYA & Clicking sockets very fast could result in negative scrap money & Fixed \\
+\fillrow[1.6em]18.10.2026 & Playtest / Ömer Faruk YÜCE & Runner zombies sometimes skipped path turns at $3\times$ speed & Fixed \\
+\fillrow[1.6em]24.10.2026 & UI Test / Metehan GERGİN & Tower menu was partly cut off near the screen edges & Fixed \\
+\end{longtblr}
+
+\subsection{Team, Roles and Contributions}
+
+\begin{guidance}
+Give each member’s roles and actual contributions to the project in the table below. Relate the contributions to the work package and task numbers in the project plan submitted at the midterm (e.g. WP3, 3.2), and explain any major deviation from the plan.
+\end{guidance}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.625,l]X[0.875,l]X[0.750,l]X[1.750,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Student No} & \textbf{Name} & \textbf{Role(s)} & \textbf{Actual contributions (work package / task)} \\
+\fillrow[1.6em]030722013 & Emir KAYA & Lead Programmer & Game manager, zombie path movement, tower targeting, object pooling (WP1, WP3) \\
+\fillrow[1.6em]030722017 & Ömer Faruk YÜCE & Lead Game Designer & Tower stats balance (Sentry, Sniper, Shotgun vs zombies), UI and HUD (WP2, WP4) \\
+\fillrow[1.6em]0307221017 & Metehan GERGİN & Level \& Audio Designer & Left-to-right level layouts, sprite integration, audio setup, Windows/WebGL testing (WP5, WP6) \\
+\fillrow[1.6em]--- & Aggro Games & Team Collaboration & Game design document writing, testing, and team review \\
+\end{longtblr}

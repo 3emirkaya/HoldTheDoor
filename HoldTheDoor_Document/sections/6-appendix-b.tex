@@ -1,0 +1,55 @@
+% 6 Appendix B
+\section{Appendix B}
+
+\begin{guidance}
+\centering
+\begin{tblr}{colspec={Q[r,3.98cm]Q[c,1.42cm]Q[c,1.38cm]Q[c,1.42cm]Q[c,1.59cm]}, hlines, vlines, row{1,2}={bg=gddmhead}, row{4-Z}={fg=gddnavy, bg=white}}
+\SetCell{c} \textbf{Object} & \SetCell[c=4]{c} \textbf{Properties} & & & \\
+\SetCell{c} \textit{Unit type} & \textit{Hit Points} & \textit{Damage} & \textit{Bullet speed} & \textit{Movement} \\
+\SetCell[c=5]{l,bg=gddmgroup,fg=gddnavy} \textit{Basic Enemies} & & & & \\
+Cannon -01 & 30 & 100 & Medium & NA \\
+Cannon -02 & 60 & 150 & Slow & NA \\
+Static rocket launcher & 70 & 700 & Medium & NA \\
+Flock 1 & 15 & 500 & NA & Medium \\
+Flock 2 & 15 & 35 & Slow & Medium \\
+Medium 1 & 80 & 350 & Fast & Slow \\
+Medium 2 & 90 & 400 & Medium & Slow \\
+Rail & 120 & 600 & NA & Slow \\
+Small 1 & 25 & 200 & Fast & Fast \\
+Small 2 & 30 & 210 & Fast & Fast \\
+\end{tblr}
+\end{guidance}
+% Write your text below.
+
+\subsection{Hold the Door -- Game Balance Matrix}
+
+The tables below establish the exact numerical balancing values for the 3 defensive tower archetypes and 3 zombie classes in \textbf{Hold the Door}.
+
+\vspace{0.3cm}
+\noindent\textbf{Table B.1: Defensive Towers (Player Elements)}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[1.2,l]X[0.6,c]X[0.7,c]X[0.8,c]X[0.7,c]X[1.4,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Tower \& Tier} & \textbf{Cost} & \textbf{Damage} & \textbf{Fire Rate / Reload} & \textbf{Range} & \textbf{Special Properties} \\
+\SetCell[c=6]{l,bg=gddlabel} \textit{Single-Target Sentry (High Single-Target DPS)} & & & & & \\
+Single-Target Sentry I & 100g & 25 & 1.0 /s & 3.5 u & Steady rapid kinetic rifle \\
+Single-Target Sentry II & 160g & 50 & 1.2 /s & 4.0 u & Caliber upgrade (+100\% damage) \\
+Single-Target Sentry III & 240g & 95 & 1.5 /s & 4.5 u & Twin barrels; high sustained DPS \\
+\SetCell[c=6]{l,bg=gddlabel} \textit{Sniper Watchtower (Extreme Range \& Lethal Single Shot, Long Reload)} & & & & & \\
+Sniper Watchtower I & 140g & 80 & 0.33 /s (3.0s) & 7.0 u & Long-range anti-tank shot \\
+Sniper Watchtower II & 220g & 170 & 0.40 /s (2.5s) & 8.5 u & Heavy AP round; massive damage \\
+Sniper Watchtower III & 320g & 350 & 0.50 /s (2.0s) & 10.0 u & Anti-materiel rifle; tank killer \\
+\SetCell[c=6]{l,bg=gddlabel} \textit{Shotgun Bunker (Short Range, Conical AoE Spread Blast)} & & & & & \\
+Shotgun Bunker I & 110g & 12 $\times$ 4 (48) & 0.7 /s & 2.2 u & 4-pellet wide conical spread \\
+Shotgun Bunker II & 175g & 22 $\times$ 5 (110) & 0.8 /s & 2.6 u & 5-pellet spread; high crowd burst \\
+Shotgun Bunker III & 260g & 40 $\times$ 6 (240) & 0.9 /s & 3.0 u & 6 heavy buckshot; shreds swarms \\
+\end{longtblr}
+
+\vspace{0.4cm}
+\noindent\textbf{Table B.2: Antagonistic Units (Zombie Horde)}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[1.1,l]X[0.6,c]X[0.7,c]X[0.7,c]X[0.6,c]X[1.5,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Zombie Type} & \textbf{HP} & \textbf{Speed} & \textbf{Fence Dmg} & \textbf{Bounty} & \textbf{Tactical Behavior \& Counter} \\
+Tank Zombie & 600 & 0.9 u/s (Slow) & 5 HP & 35g & High health sponge; eliminate with Snipers! \\
+Runner Zombie & 60 & 3.6 u/s (Fast) & 1 HP & 8g & Fragile sprinter; wipe out with Shotguns! \\
+Walker Zombie & 180 & 1.8 u/s (Avg) & 2 HP & 15g & Median health \& speed; target with Sentries. \\
+\end{longtblr}

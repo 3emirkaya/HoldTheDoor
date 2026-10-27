@@ -1,0 +1,313 @@
+% 2 Concept Document: write your text below the grey guidance boxes (guidance environments).
+\section{Concept Document}
+
+\begin{guidance}
+The concept document presents the game concept.
+
+It gives a general overview of the game, so that anyone can read it and understand what the game is like.
+
+This part of the document is one that will change very little once the concept is accepted.
+\end{guidance}
+This document explains the main idea, gameplay mechanics, visual style, and technical details of \textbf{Hold the Door}, a 2D top-down zombie tower defense game created with Unity~6 and C\# for PC (Windows) and WebGL.
+
+\subsection{Title Page}
+
+\begin{guidance}
+Game Name, Game Logo, Game Catch Phrase, Document Type, Document Version.
+
+These need to be clear so that when used as a document everyone immediately recognizes it.
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Game Name:} Hold the Door
+  \item \textbf{Game Logo:} A modern red castle tower forming the letter 'A' on a dark background.
+  \item \textbf{Game Catch Phrase:} \textit{``Stop the Zombies, Save the Camp, Hold the Door!''}
+  \item \textbf{Document Type:} Game Concept \& Design Document (GCDD)
+  \item \textbf{Document Version:} \DocVersion
+\end{itemize}
+
+\subsection{Credit Page}
+
+\begin{guidance}
+This area should present information about the person who authored the document and for what company.
+
+\textit{Example:}
+\end{guidance}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[1.000,r]X[1.000,l]}, hlines, vlines}
+\textit{Document Purpose:} & Game Concept \& Design Document for YAM 415 Course \\
+\textit{Document Version:} & \DocVersion \\
+\textit{Working Title:} & \GameName \\
+\textit{Game Concept:} & 2D Top-Down Zombie Tower Defense with 3 Towers and a Fence Barrier \\
+\textit{Game Document Author:} & \PreparedBy \\
+\textit{Group Code:} & \GroupCode \\
+\end{longtblr}
+
+\subsection{Sign-Off}
+
+\begin{guidance}
+This section confirms that every team member has read the design and agrees with its current version. Each member signs their own row; add rows if needed.
+\end{guidance}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[1.125,l]X[1.250,l]X[1.000,l]X[0.625,l]}, hlines, vlines, rowhead=1, row{1}={bg=gddhead}}
+\textbf{Role} & \textbf{Name} & \textbf{Signature} & \textbf{Date} \\
+\fillrow[2.2em]\textbf{CEO} & Emir KAYA &  & 27.10.2026 \\
+\fillrow[2.2em]\textbf{Lead Designer} & Ömer Faruk YÜCE &  & 27.10.2026 \\
+\fillrow[2.2em]\textbf{Lead Programmer} & Metehan GERGİN &  & 27.10.2026 \\
+
+\end{longtblr}
+
+\subsection{Introduction}
+
+\begin{guidance}
+A short sentence or two about the game, its genre, player type, technical form, references and theme.
+
+Everyone that reads this should be able to understand what the basic idea of this game is.
+
+The introduction can also explain the reason for the concept and the history of the game it is based on. Here is a short list of subjects to address in the introduction:
+
+\begin{itemize}[label=\textendash]
+  \item Genre
+  \item Player Type
+  \item Game Play
+  \item Technical Form
+  \item History
+  \item Reference
+  \item Theme
+  \item Design Intentions (original or cloned)
+\end{itemize}
+\end{guidance}
+\textbf{Hold the Door} is a single-player 2D top-down tower defense game set during a zombie outbreak. In this game, the player protects a human survivor camp from waves of incoming zombies. At the right side of the map, there is a wooden fence gate (called ``The Door''). The player's main goal is to stop the zombies before they reach this fence and destroy it.
+
+The gameplay is simple and clear. Zombies spawn on the left side of the screen and walk along a dirt road toward the right side. To defend the camp, the player can build three different types of towers along the road:
+\begin{enumerate}
+  \item {Single-Target Sentry:} A machine gun turret with medium range and good continuous damage against a single target.
+  \item {Sniper Tower:} A long-range tower that deals very high damage in a single shot, but takes a longer time to reload. It is the best choice against slow, high-health Tank zombies.
+  \item {Shotgun Tower:} A close-range tower that fires a wide blast of pellets. It deals area damage and is very effective against groups of fast Runner zombies.
+\end{enumerate}
+
+The player faces three types of zombies: the slow but tough "Tank Zombie", the fast but weak "Runner Zombie", and the standard "Walker Zombie". 
+
+The game is inspired by popular tower defense games like \textit{Plants vs. Zombies}, \textit{Kingdom Rush}, and \textit{Thronefall}. We designed the game to be easy to learn, fun to play, and visually clean, without unnecessary complexity.
+
+\subsection{Game Analysis}
+
+\begin{guidance}
+This is a general overview of the game.
+\end{guidance}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.535,r]X[1.465,l]}, hlines, vlines, column{1}={bg=gddlabel}}
+\SetCell[c=2]{l,bg=gddsect} \textbf{Game Description} & \\
+Genre: &
+  Strategy / Tower Defense
+  \\
+Game Elements: &
+  Building Towers, Managing Scrap Money, Protecting the Wooden Fence (the Door)
+  \\
+\end{longtblr}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.453,r]X[1.547,l]}, hlines, vlines, column{1}={bg=gddlabel}}
+Game Content: &
+  Action, Strategy, Survival, Defense
+  \\
+Theme: &
+  Post-Apocalyptic Zombie Defense
+  \\
+Style: &
+  Clean 2D Top-Down Pixel / Vector Art with clear colors
+  \\
+Game Sequence: &
+  Level-based progression with increasing zombie waves
+  \\
+Player: &
+  Single Player
+  \\
+\SetCell[c=2]{l,bg=gddsect} \textbf{Game Reference} & \\
+Game Taxonomy: &
+  Strategy Game
+  \\
+Player Immersion: &
+  Tactical Thinking, spatial planning, and quick decision-making under wave pressure
+  \\
+Reference: &
+  {Plants vs. Zombies} (lane defense and pacing), {Kingdom Rush} (tower placement), {Thronefall} (clean minimalist design)
+  \\
+\end{longtblr}
+
+\begin{longtblr}[theme=gdd, entry=none, label=none]{colspec={X[0.453,r]X[1.547,l]}, hlines, vlines, column{1}={bg=gddlabel}}
+\SetCell[c=2]{l,bg=gddsect} \textbf{Game Technical} & \\
+Technical Form: &
+  2D Top-Down 
+  \\
+View: &
+  Fixed camera showing the full path from the left spawn point to the right fence gate
+  \\
+Engine / Language: &
+  Unity Engine (C\#)
+  \\
+Platform / Device: &
+  PC (Windows 10/11), WebGL (Web Browsers) and Mobile 
+  \\
+\SetCell[c=2]{l,bg=gddsect} \textbf{Game Sales} & \\
+Consumer Group: &
+  Casual gamers and fans of tower defense games (ages 12--40)
+  \\
+Revenue Model (Payment): &
+  Free-to-play (Completely free, no ads or in-game purchases)
+  \\
+Estimated Price: &
+  Free ($0.00)
+  \\
+Device Support List &
+  Windows 10/11 64-bit, 4 GB RAM, modern WebGL2 web browsers (Chrome, Edge, Firefox), Android devices (Android 10+)
+  \\
+\end{longtblr}
+
+\subsection{Game Atmosphere}
+
+\begin{guidance}
+This is where it is best to have a mood board or a clear description of the game’s style.
+
+This is a good place to start interacting with a graphic designer.
+
+\begin{itemize}[label=\textbullet]
+  \item Atmosphere Mood Board
+  \item Character/ Units Sketch \& Description
+  \item Level (Location) Sketches \& Descriptions
+  \item Audio Description
+\end{itemize}
+\end{guidance}
+\textbf{Visual Atmosphere:} The game has a clean survival atmosphere. The background shows a dirt pathway surrounded by grass and small rocks. The path starts from the left side and ends at the far right side where a wooden fence stands. 
+
+\textbf{Towers \& Zombies Descriptions:}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Shotgun Tower:} A stout cylindrical stone turret with a heavy rotating cannon barrel mounted on top. It swivels to fire wide-spread blasts against groups of enemies at close range.
+  \item \textbf{Single-Target Tower:} A classic stone watchtower with castle battlements on top and rectangular firing windows. It fires steady, accurate shots at individual targets.
+  \item \textbf{Sniper Tower:} A taller, heavily reinforced stone fortress tower with iron-riveted bands and narrow fortified slits. Its high vantage point gives it extreme range and lethal single-shot damage.
+  \item \textbf{Standard Zombie (Walker):} A pale-green bald zombie with large round glowing eyes and brown trousers. It moves at average walking speed with balanced health.
+  \item \textbf{Runner Zombie:} A fast, green-haired zombie with wide eyes and a quick running stride. It has low health but moves rapidly toward the fence.
+  \item \textbf{Tank Zombie:} A hunched mutant zombie with sharp teeth, bloodshot eyes, and outstretched claws wearing a ragged purple shirt. It has very high health and deals heavy damage to the fence.
+  \item \textbf{The Fence (The Door):} A wooden picket fence gate on the right edge of the screen that serves as the final barrier protecting the camp.
+\end{itemize}
+
+
+\textbf{Audio Description:} Ambient wind sounds and distant zombie groans set the mood. During gameplay, the player hears clear sound effects: gunshots, shotgun blasts, loud sniper rifle cracks, zombie hit sounds, and the wooden thud when a zombie hits the fence gate.
+
+\subsection{Game Play}
+\begin{guidance}
+Use this outline to write a descriptive paragraph about how the game is played.
+
+The reader should be able to imagine actually playing the game.
+
+Do not use generic names when writing about the gameplay.
+
+\textit{Example: No one wants to hear that enemy\_1 will have more hit points than enemy\_2. Instead we should talk about how the Lazarus Fighter has more armour than the Apollo Fighter.}
+
+This outline will vary according to the type of game.
+
+\begin{itemize}[label=\textbullet]
+  \item Opening the game application
+  \item Game Options
+  \item Story Synopsis
+  \item Modes
+  \item Game Elements
+  \item Game Levels
+  \item Player’s Controls
+  \item Winning
+  \item Losing
+  \item End
+  \item Why is all this fun?
+\end{itemize}
+\end{guidance}
+\textbf{Opening the Game Application:} When the player launches the game, a short cinematic animation plays. A large, strong survivor character (inspired by the character Hodor from \textit{Game of Thrones}) is seen desperately pressing his back against a heavy wooden door, using all his strength to keep it closed. Outside, an aggressive zombie horde pushes violently against the wood. Decaying zombie arms and claws burst through the cracks between the wooden planks, trying to grab him. With a loud crash, the wooden door groans under pressure, and the title logo {``HOLD THE DOOR''} slams onto the screen before smoothly transitioning into the Main Menu.
+
+\textbf{Game Options:} From the Main Menu, the player can choose from three options: \textit{Play}, \textit{Settings}, and \textit{Credits}. Inside the Settings menu, players can adjust audio levels using simple sliders for Master Volume, Music Volume, and Sound Effects (SFX) Volume. Players can also toggle fullscreen display and select screen resolution.
+
+\textbf{Story Synopsis:} A sudden zombie apocalypse has wiped out the surrounding cities. A small group of survivors has retreated to a fortified camp inside a secluded canyon, protected only by a sturdy wooden fence gate known as ``The Door''. As the camp's defense commander, the player must place defensive towers along the winding dirt path to eliminate incoming zombie waves before they reach and destroy the fence.
+
+\textbf{Modes:} The game offers two distinct difficulty modes:
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Normal (Medium) Mode:} The standard balanced mode where zombies have regular health, standard movement speeds, and base damage. This mode is designed for casual play and learning effective tower placement strategies.
+  \item \textbf{Hard Mode:} A challenging mode where zombie attributes are significantly increased. All zombie types receive higher health pools, faster movement speeds, and deal more damage when attacking the wooden fence gate. Players must manage their scrap currency strictly and upgrade towers with precision to survive.
+\end{itemize}
+
+\textbf{Game Elements:} The core gameplay elements include:
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Scrap Currency:} The primary resource used to build and upgrade towers. The player begins Level~1 with 250 scrap currency and earns additional scrap for every eliminated zombie.
+  \item \textbf{Stone Sockets:} Fixed circular stone foundation spots positioned along the roadside where defensive towers can be constructed.
+  \item \textbf{Defensive Towers:} Three specialized towers: the rapid \textit{Single-Target Sentry} (100 scrap), the wide-area \textit{Shotgun Tower} (110 scrap), and the long-range \textit{Sniper Tower} (140 scrap).
+  \item \textbf{Zombie Types:} Three distinct enemy archetypes: balanced \textit{Standard Walkers}, fast and fragile \textit{Runner Zombies}, and massive, high-health \textit{Tank Zombies}.
+  \item \textbf{The Wooden Fence Gate (The Door):} The final barrier protecting the survivor camp at the end of the road, starting with 20/20 health points.
+\end{itemize}
+
+\textbf{Game Levels:} When entering Level~1, the player sees the full map on screen. A winding dirt path leads from the left side of the screen to the right, ending directly at the wooden fence gate. Fixed stone sockets are placed along the road turns and straight sections. Incoming waves feature escalating numbers of mixed zombie types, requiring strategic tower placement to cover both swarms and heavy targets.
+
+\textbf{Player's Controls:}
+\begin{itemize}[label=\textbullet]
+  \item \textit{Mouse Left-Click:} Clicking an empty stone socket opens a circular radial menu showing the 3 available towers and their costs. Clicking an existing tower opens its upgrade/sell menu. Clicking UI buttons triggers game actions.
+  \item \textit{Call Wave Button / Spacebar:} After placing towers, clicking the ``Call Wave'' button or pressing the Spacebar begins the incoming zombie wave early or toggles game speed ($1\times, 2\times, 3\times$).
+  \item \textit{Number Keys 1--3:} Quick keyboard hotkeys to select Sentry (1), Shotgun (2), or Sniper (3).
+  \item \textit{Escape Key:} Closes active building menus, cancels current selections, or opens the Pause menu.
+\end{itemize}
+
+\textbf{Winning:} The player wins the level when all scheduled zombie waves are completely eliminated and the wooden fence gate still has at least 1 health point remaining .
+
+\textbf{Losing:} The player loses the game if zombies reach the wooden fence gate and deal enough cumulative damage to reduce its health to 0 , causing the gate to break open.
+
+\textbf{End:} When the level concludes, an end-of-game summary screen appears:
+\begin{itemize}[label=\textbullet]
+  \item \textit{Victory Screen:} Displays a 1 to 3 star performance rating based on remaining fence health, total scrap collected, and buttons to proceed to the next level or replay.
+  \item \textit{Defeat Screen:} Displays ``The Door Has Fallen!'' with buttons to instantly restart the level or return to the Main Menu.
+\end{itemize}
+
+\textbf{Why is all this fun?} The fun comes from choosing the right tower for the right zombie: using Shotguns against fast swarms, Snipers against heavy tanks, and Sentries for regular walkers, all while managing scrap money carefully under escalating wave pressure.
+
+\subsection{Key Features}
+
+\begin{guidance}
+Key features are a list of game elements that are attractive to the player.
+
+It is a good idea to talk about the key features with someone from marketing.
+
+\begin{itemize}[label=\textbullet]
+  \item Number of Levels
+  \item Number of Enemies/ Characters \textit{(Example: 12 characters or amount of enemies, end bosses)}
+  \item Time of Game Play \textit{(Example: 2 hours of fun)}
+  \item Reply ability (the player’s maximum reaction time to the game)
+  \item Audio Specifications
+  \item Graphic Specifications
+  \item Device Compatibility
+  \item Number of Players
+  \item Online Activities (high scores, etc.)
+  \item Number/Type of Modes
+\end{itemize}
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{3 Clear Tower Types:} Single-Target Sentry, Sniper Tower, and Shotgun Tower (each can be upgraded 3 times).
+  \item \textbf{3 Balanced Zombie Types:} Tank Zombie (slow and heavy), Runner Zombie (fast and weak), and Walker Zombie (average).
+  \item \textbf{Simple Left-to-Right Path:} Easy to understand direction and strategy.
+  \item \textbf{Game Speed Controls:} Normal ($1\times$), Fast ($2\times$), and Blitz ($3\times$) speed buttons.
+  \item \textbf{Fair and Predictable:} No random misses; victory depends entirely on player strategy and tower placement.
+  \item \textbf{Smooth Performance:} Runs at 60 FPS on standard computers and in web browsers.
+\end{itemize}
+
+\subsection{Selling Features}
+
+\begin{guidance}
+This is a list of features that could be potentially helpful to marketing.
+
+If the game has any copyrightable material (such as characters), note it here.
+
+It is a good idea to talk about the key features with someone from marketing.
+
+\begin{itemize}[label=\textbullet]
+  \item Marketing Ideas
+  \item Consumer Group
+  \item Unique Features
+  \item Merchandising
+\end{itemize}
+\end{guidance}
+\begin{itemize}[label=\textbullet]
+  \item \textbf{Catchy Theme (Hold the Door):} Defending the last wooden fence of a survivor camp gives an immediate sense of urgency.
+  \item \textbf{Rock-Paper-Scissors Strategy:} Each tower directly counters a specific zombie type, making the game easy to learn but rewarding to master.
+  \item \textbf{No Complicated Menus:} Straightforward controls and clean user interface.
+\end{itemize}

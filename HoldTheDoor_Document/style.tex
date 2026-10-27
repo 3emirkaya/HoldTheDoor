@@ -1,0 +1,161 @@
+% =====================================================================
+%  Layout of the game document template (fonts, headings, tables, cover). You do not need to edit this file.
+% =====================================================================
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage{tgtermes}             % Times-like text
+  \usepackage[scale=0.92]{tgheros}  % Arial-like headings
+  \newcommand{\coverserif}{\fontfamily{Caladea-TLF}\selectfont}  % Cambria-like cover font
+  \newcommand{\coversans}{\fontfamily{Crlt-LF}\selectfont}       % Calibri-like cover font
+\else
+  \usepackage{fontspec}
+  \setmainfont{texgyretermes}[Extension=.otf, UprightFont=*-regular, BoldFont=*-bold,
+    ItalicFont=*-italic, BoldItalicFont=*-bolditalic]
+  \setsansfont{texgyreheros}[Scale=0.92, Extension=.otf, UprightFont=*-regular, BoldFont=*-bold,
+    ItalicFont=*-italic, BoldItalicFont=*-bolditalic]
+  \newfontfamily\coverserif{Caladea}[Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold,
+    ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
+  \newfontfamily\coversans{Carlito}[Extension=.ttf, UprightFont=*-Regular, BoldFont=*-Bold,
+    ItalicFont=*-Italic, BoldItalicFont=*-BoldItalic]
+\fi
+\usepackage[english]{babel}
+\frenchspacing
+\usepackage{amssymb}
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=1.6cm, bottom=2.2cm, footskip=1.1cm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tabularray}
+\usepackage{enumitem}
+\usepackage{titlesec, titletoc}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{environ}
+\usepackage{etoolbox}
+\usepackage[normalem]{ulem}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit}
+
+% Colours of the template
+\definecolor{gddhead}{HTML}{D9D9D9}
+\definecolor{gddsect}{HTML}{B3B3B3}
+\definecolor{gddlabel}{HTML}{E6E6E6}
+\definecolor{gddmhead}{HTML}{C0C0C0}
+\definecolor{gddmgroup}{HTML}{CCFFCC}
+\definecolor{gddnavy}{HTML}{000080}
+\definecolor{gddtoc}{HTML}{2E74B5}
+\definecolor{gddguideback}{HTML}{F2F2F2}
+\definecolor{gddguiderule}{HTML}{A6A6A6}
+\definecolor{gddhint}{HTML}{6E6E6E}
+
+% Paragraphs, lists and check boxes
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip plus 2pt}
+\setlist{itemsep=1pt, parsep=0pt, topsep=2pt}
+\setlist[itemize]{leftmargin=1.8em}
+\newlist{checklist}{itemize}{1}
+\setlist[checklist]{label=$\square$, leftmargin=1.8em, itemsep=2pt}
+\newcommand{\checkbox}{$\square$}
+\newcommand{\checkedbox}{$\boxtimes$}
+\newcommand{\sqbullet}{\raisebox{0.15ex}{\scalebox{0.55}{$\blacksquare$}}}
+
+% Headings: every part starts on a new page
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\titleformat{\section}{\sffamily\bfseries\fontsize{14}{17}\selectfont}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\sffamily\bfseries\fontsize{12}{14.5}\selectfont}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\sffamily\bfseries\fontsize{10.5}{13}\selectfont}{\thesubsubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{0pt}{10pt}
+\titlespacing*{\subsection}{0pt}{14pt}{5pt}
+\titlespacing*{\subsubsection}{0pt}{10pt}{4pt}
+\pretocmd{\section}{\clearpage}{}{}  % also when the previous part is empty
+
+% Table of contents
+\titlecontents{section}[0pt]{\addvspace{7pt}\bfseries\fontsize{11}{13.5}\selectfont}
+  {\makebox[1.6em][l]{\thecontentslabel}\MakeUppercase}{\MakeUppercase}{\titlerule*[0.6em]{.}\contentspage}
+\titlecontents{subsection}[0pt]{\addvspace{1pt}\bfseries\fontsize{11}{13.5}\selectfont}
+  {\makebox[2.4em][l]{\thecontentslabel}\scshape}{\scshape}{\titlerule*[0.6em]{.}\contentspage}
+\titlecontents{subsubsection}[0pt]{\fontsize{10}{12.5}\selectfont}
+  {\makebox[3.2em][l]{\thecontentslabel}}{}{\titlerule*[0.6em]{.}\contentspage}
+
+% Page numbers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% Guidance boxes and grey hints (hidden with \showguidancefalse in main.tex)
+\newenvironment{gddframe}{%
+  \def\FrameCommand{{\color{gddguiderule}\vrule width 2pt}\fboxsep=6pt\colorbox{gddguideback}}%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}\small}{\endMakeFramed}
+% (the framed box leaves "no page break" set; clearing it keeps each part starting on a new page)
+\makeatletter
+\NewEnviron{guidance}{\ifshowguidance\begin{gddframe}\BODY\end{gddframe}\par\@nobreakfalse\fi}
+\makeatother
+\newcommand{\hint}[1]{\ifshowguidance{\color{gddhint}#1}\fi}
+
+% Tables
+% Tables break across pages and repeat their header row; no caption or "continued" lines
+\NewTblrTheme{gdd}{%
+  \DefTblrTemplate{caption}{default}{}%
+  \DefTblrTemplate{conthead}{default}{}%
+  \DefTblrTemplate{contfoot}{default}{}%
+  \DefTblrTemplate{capcont}{default}{}}
+\SetTblrOuter[longtblr]{presep=4pt, postsep=8pt}
+\SetTblrInner{rowsep=2.5pt}
+% Lists inside table cells; the starred form is the first item of a cell
+\newcommand{\cpar}[1]{\par\setlength{\parskip}{1pt}\noindent #1}
+\NewDocumentCommand{\citem}{s m m}{\IfBooleanF{#1}{\par}\setlength{\parskip}{1pt}%
+  \noindent\hangindent=1.1em\hangafter=1\makebox[1.1em][l]{#2}#3}
+\NewDocumentCommand{\citemm}{s m m}{\IfBooleanF{#1}{\par}\setlength{\parskip}{1pt}%
+  \noindent\hangindent=2.2em\hangafter=1\hspace*{1.1em}\makebox[1.1em][l]{#2}#3}
+\newcommand{\fillrow}[1][1.6em]{\rule{0pt}{#1}}
+
+% Cover
+\newcommand{\makecover}{%
+  \newgeometry{margin=2.5cm}%
+  \begin{titlepage}
+    \centering
+    {\coverserif\fontsize{11}{13}\selectfont\MakeUppercase{\GroupName}\par}
+    \vspace{1.6cm}
+    \ifdefempty{\GroupLogo}
+      {\fbox{\parbox[c][1.9cm][c]{4.6cm}{\centering\bfseries\fontsize{14}{16.5}\selectfont Design Team Name\\Logo if exists}}}
+      {\includegraphics[height=2.2cm, width=8cm, keepaspectratio]{\GroupLogo}}\par
+    \vspace{0.9cm}
+    {\coverserif\fontsize{26}{31}\selectfont Video Game Concept\\and Design Document:\par}
+    \vspace{1mm}\rule{\linewidth}{0.6pt}\par\vspace{1mm}
+    {\coverserif\bfseries\fontsize{30}{36}\selectfont\GameName\par}
+    \vspace{3.6cm}
+    {\coversans\fontsize{12}{14.5}\selectfont Version\quad\DocVersion\par}
+    \vspace{0.45cm}
+    {\coversans\fontsize{11}{13.4}\selectfont Copyright \textcopyright\ 2026 \GroupName\\All rights reserved.\par}
+    \vspace{2.4cm}
+    {\coversans\bfseries\fontsize{14}{17}\selectfont\uline{\GroupCode\ \textperiodcentered\ \PreparedBy}\par}
+    \vfill
+    {\coversans\fontsize{12}{14.5}\selectfont\DocDate\par}
+  \end{titlepage}
+  \restoregeometry}
+
+% Contents page
+\makeatletter
+\newcommand{\gddtoc}{\@starttoc{toc}}
+\makeatother
+\newcommand{\maketoc}{%
+  \pagenumbering{roman}\setcounter{page}{2}%
+  \begin{center}
+    \uline{Game Concept \& Design Document Template}\par\medskip
+    \textbf{Document Contents}
+  \end{center}
+  \vspace{4mm}
+  \pdfbookmark[1]{Table of Contents}{toc}%
+  {\coversans\fontsize{16}{19}\selectfont\color{gddtoc}Table of Contents\par}
+  \vspace{5mm}
+  {\setlength{\parskip}{0pt}\gddtoc}
+  \clearpage
+  \pagenumbering{arabic}}
+
+\AtBeginDocument{\hypersetup{pdftitle={\GameName}, pdfauthor={\PreparedBy}, pdfsubject={Video Game Concept and Design Document}}}
